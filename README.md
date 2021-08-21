@@ -250,7 +250,7 @@ lines(dx, lwd = 2, col = "red")
 
 ### Citations
 
-I gained a lot of info from the website at this link:
+I gained a lot of info used here from the website at this link:
 
 https://r-coder.com/density-plot-r/#Kernel_density_bandwidth_selection
 
