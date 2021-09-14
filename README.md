@@ -183,11 +183,7 @@ plot(par, lwd = 2, col = "green")
 
 # plot second with lines() function
 lines(kid, col = "purple", lwd = 2)
-
-
-
-
-
+```
 
 
 # Creating Density Plots in Base R
