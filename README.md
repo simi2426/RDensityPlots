@@ -6,7 +6,7 @@ For this example, I am going to use the Titanic dataset from Kaggle, which can b
 
 ```r
 # load data and libraries
-train = read.csv("~/downloads/titanictrain.csv")
+train = read.csv("~/downloads/titanictest.csv")
 library(ggplot2)
 ```
 
