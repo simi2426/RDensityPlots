@@ -187,13 +187,16 @@ lines(kid, col = "purple", lwd = 2)
 
 
 ## Adding a Histogram and Density Plot
+
+(this graph was made using the `trainnew` omitted dataset)
+
 In base R, we can simultaneously graph a histogram and density line using the `line()` function. First, we need to make a histogram:
 
 ```r
-hist(train$Age, freq = FALSE, main = "Histogram with Density")
+hist(trainnew$Age, freq = FALSE, main = "Histogram with Density")
 
 # establish dx as our density line of Age
-dx <- density(train$Age)
+dx <- density(trainnew$Age)
 
 # create the graph
 lines(dx, lwd = 2, col = "red")
