@@ -121,26 +121,6 @@ ggarrange(density.p, fivenumber.p,
 Now, we have a graph with both a density plot and five number summary.
 
 
-# Multiple Curves on one Graph
-There may be instances where you want to show multiple density curves on a singular graph. Here, we are going to use the mycollegedata.csv dataset to compare the means of parent and child income. The dataset can be found at this Dropbox link: https://www.dropbox.com/home?preview=collegedata.csv First, let's assign variable names to the density we want to measure.
-
-```r
-# import dataset
-college = read.csv("~/downloads/mycollegedata.csv")
-
-# assign parent and kid density variables
-par <- density(college$pmean)
-kid <- density(college$kmean)
-```
-
-Now, let's plot the first density graph:
-
-```r
-plot(par, lwd = 2, col = "green")
-
-# plot second with lines() function
-lines(kid, col = "purple", lwd = 2)
-```
 
 
 # Creating Density Plots in Base R
@@ -183,6 +163,28 @@ Data: trainnew$Age (714 obs.);	Bandwidth 'bw' = 3.226
  ```r
  plot(density(trainnew$Age))
 ```
+
+## Multiple Curves on one Graph
+There may be instances where you want to show multiple density curves on a singular graph. Here, we are going to use the mycollegedata.csv dataset to compare the means of parent and child income. The dataset can be found at this Dropbox link: https://www.dropbox.com/home?preview=collegedata.csv First, let's assign variable names to the density we want to measure.
+
+```r
+# import dataset
+college = read.csv("~/downloads/mycollegedata.csv")
+
+# assign parent and kid density variables
+par <- density(college$pmean)
+kid <- density(college$kmean)
+```
+
+Now, let's plot the first density graph:
+
+```r
+plot(par, lwd = 2, col = "green")
+
+# plot second with lines() function
+lines(kid, col = "purple", lwd = 2)
+```
+
 
 ## Adding a Histogram and Density Plot
 In base R, we can simultaneously graph a histogram and density line using the `line()` function. First, we need to make a histogram:
