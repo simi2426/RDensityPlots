@@ -34,10 +34,8 @@ plot = ggplot(train, aes(x = Age)) +
 plot
 ```
 
-# Creating Multiple Density Plots in One Graph
+## Creating Multiple Density Plots in One Graph
 R is all about data visualization, and comparing two separate graphs can be difficult. For this example, we are going to compare the mean fare paid by males and females on the ship by creating two density plots on a singular graph.
-
-## Create Density Graph
 
 ```r
 x = ggplot(train, aes(x = Fare, color = Sex)) +
@@ -53,11 +51,13 @@ The `x` assignment at the end simply plots the graph.
 
 # Graphs with Five Number Summary
 
-What if we want to create a density graph that includes a five number summary and a graph? We can do that in R! For this example, we are going to create a density plot of age and gender on the Titanic. First, we need to install some packages:
+What if we want to create a density graph that includes a five number summary and a graph? We can do that in R! For this example, we are going to create a density plot of age and gender on the Titanic. First, we need to install some packages (only install if you haven't already!):
 
 ```r
 # install packages
 install.packages("ggpubr")
+
+# read libraries into console
 library(ggpubr)
 library(ggplot2)
 
@@ -72,6 +72,7 @@ First, we can use the `desc_statby` function to create the five number summary o
 fivenumber = desc_statby(train,
                          measure.var = "Age",
                          grps = "Sex")
+
 # run to see data
 fivenumber
      Sex length  min max median     mean iqr     mad
@@ -85,9 +86,9 @@ fivenumber
 2 215.4496
 ```
 
-`measure.var = "Age` tells the computer that the variable we want to measure is Age
+`measure.var = "Age"` tells the computer that the variable we want to measure is Age
 
-`grps` tells the computer that we are grouping this data by gender.
+`grps - "Sex"` tells the computer that we are grouping this data by gender.
 
 Now, we want to create a table of this data that can be put in the final graph:
 
@@ -119,46 +120,17 @@ ggarrange(density.p, fivenumber.p,
 
 Now, we have a graph with both a density plot and five number summary.
 
-## Kernel Density Estimation
-A Kernel Density Estimation is a non-parametric way to estimate the probability density function, which is a data smoothing process. Whenever we plot a kernel density estimate, we need to establish a bandwith. Let's use two examples of a too-big and too-small bandwith:
 
-```r
-plot(density(train$Age, bw = 20), lwd = 2,
-     main = "Big bandwith")
-
-plot(density(train$Age, bw = 0.05), lwd = 2,
-     main = "Small bandwith")
-```
-
-What do we use? To solve this, different methods are available, the three I will be showing are the rule of thumb, cross validation, and the plug in method.
-
-```r
-# Using rule of thumb
-plot(density(train$Age), main = "Rule of Thumb",
-     cex.lab = 1.5, cex.main = 1.75, lwd = 2)
-
-# Using cross validation
-plot(density(train$Age, bw = bw.ucv(train$Age)), col = 2,
-     main = "Cross-validation", cex.lab = 1.5,
-     cex.main = 1.75, lwd = 2)
-
-# plug in method
-plot(density(train$Age, bw = bw.SJ(train$Age)), col = 4,
-     main = "Plug in method",
-     cex.lab = 1.5, cex.main = 1.75, lwd = 2)
-
-```
-
-## Multiple Curves on one Graph
-There may be instances where you want to show multiple density curves on a singular graph. Here, we are going to use the mycollegedata.csv dataset to compare the means of parent and child income. The dataset can be found at this Dropbox link: https://www.dropbox.com/s/sml6dnf591km98u/mycollegedata.csv?dl=0 First, let's assign variable names to the density we want to measure.
+# Multiple Curves on one Graph
+There may be instances where you want to show multiple density curves on a singular graph. Here, we are going to use the mycollegedata.csv dataset to compare the means of parent and child income. The dataset can be found at this Dropbox link: https://www.dropbox.com/home?preview=collegedata.csv First, let's assign variable names to the density we want to measure.
 
 ```r
 # import dataset
 college = read.csv("~/downloads/mycollegedata.csv")
 
 # assign parent and kid density variables
-par <- density(college$par_mean)
-kid <- density(college$kid_mean)
+par <- density(college$pmean)
+kid <- density(college$kmean)
 ```
 
 Now, let's plot the first density graph:
