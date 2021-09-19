@@ -1,5 +1,5 @@
 # RDensityPlots
-density plots in r! This includes ggplot2 and base R :)
+Density plots in R! This shows examples for both base R and the ggplot2 package :)
 
 # Density Plots with ggplot2
 For this example, I am going to use the Titanic dataset from Kaggle, which can be found here: https://www.dropbox.com/s/00j17o6xzxsdjo4/titanictest.csv?dl=0
@@ -18,11 +18,13 @@ plot = ggplot(train, aes(x = Age)) +
 plot
 ```
 
+`ggplot()` in this function, we input everything about the data we want in our graph, such as the dataset and variables. We add another function, the `geom_density()` to tell the computer what type of graph to make.
+
 `plot` is the name of the graph we have created. By assigning it to a variable, we can add on other things later. 
 
 `aes(x = Age)` This is how we set the variable we want to measure, which is the age.
 
-`geom_density()` We "add" this on to tell the computer what type of graph we want to create.
+`geom_density()` We use the + to "add" this on to tell the computer what type of graph we want to create. 
 
 Now, let's add some color. To do this, we go in the empty `geom_density` argument:
 
