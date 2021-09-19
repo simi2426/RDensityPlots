@@ -22,7 +22,7 @@ plot
 
 `plot` is the name of the graph we have created. By assigning it to a variable, we can add on other things later. 
 
-`aes(x = Age)` This is how we set the variable we want to measure, which is the age.
+`aes(x = Age)` This is how we set the variable we want to measure, which in this case is Age. R is case sensitive, so make sure to capitalize if the variable name is!
 
 `geom_density()` We use the + to "add" this on to tell the computer what type of graph we want to create. 
 
@@ -35,24 +35,7 @@ plot
 ```
 
 # Creating Multiple Density Plots in One Graph
-Let's say we want to create two density plots, but on the same graph. For this example, we are going to find the mean fare paid by men and women by creating two density graphs on a singular graph. We need to install a new library `plyr`
-
-```r
-install.packages("plyr")
-library(plyr)
-library(ggplot2)
-```
-## Find Means
-To do this, we need to create a dataset that holds the means of the fares paid by men and women. We use the `ddply` function to do this:
-
-```r
-mean = ddply(train, "Sex", summarise, grp.mean=mean(Fare))
-head(mean)
-```
-
-`head` allows you to see the first six lines of data
-
-Variables are case sensitive, so if you are encountering error messages that say something does not exist, make sure you are using capitals or lowercase!
+R is all about data visualization, and comparing two separate graphs can be difficult. For this example, we are going to compare the mean fare paid by males and females on the ship by creating two density plots on a singular graph.
 
 ## Create Density Graph
 
